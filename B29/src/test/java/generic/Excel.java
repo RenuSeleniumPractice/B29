@@ -31,7 +31,15 @@ public class Excel {
 			int cc = wb.getSheet(sheet).getRow(0).getLastCellNum();
 			for(int i=0;i<cc;i++) {
 				String k = wb.getSheet(sheet).getRow(0).getCell(i).toString();
-				String v = wb.getSheet(sheet).getRow(row).getCell(i).toString();
+				String v="";
+				try 
+				{
+					 v = wb.getSheet(sheet).getRow(row).getCell(i).toString();
+				}
+				catch(Exception e)
+				{
+					e.getMessage();
+				}
 				map.put(k, v);
 			}
 			
@@ -41,6 +49,19 @@ public class Excel {
 			e.printStackTrace();
 		}
 		return map.get(colName);
+	}
+	
+	public static int getRow(String Path,String sheet) {
+		int rc = 0;
+		try {
+			Workbook wb = WorkbookFactory.create(new FileInputStream(Path));
+			Sheet sh = wb.getSheet(sheet);
+			rc = sh.getLastRowNum();
+		}
+		catch(Exception e) {
+			
+		}
+		return rc;
 	}
 	
 }

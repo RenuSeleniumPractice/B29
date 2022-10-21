@@ -35,12 +35,12 @@ public class WebGeneric {
 		try 
 		{
 			wait.until(ExpectedConditions.visibilityOf(element));
-			Reporter.log("Logout Link is present", true);
+			Reporter.log("Element is present", true);
 			return true;
 		}
 		catch(Exception e) 
 		{
-			Reporter.log("Logout Link is not present",true);
+			Reporter.log("Element is not present",true);
 			return false;	
 		}
 	}

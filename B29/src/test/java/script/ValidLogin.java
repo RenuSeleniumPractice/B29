@@ -8,8 +8,8 @@ import generic.Excel;
 import page.EnterTimeTrackPage;
 import page.LoginPage;
 
-/*
- * 
+/*Positive Scenario: Valid User Name and Valid Password
+ * to validate Login function
  */
 
 public class ValidLogin extends BaseTest{
