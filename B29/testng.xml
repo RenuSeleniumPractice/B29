@@ -1,7 +1,18 @@
-<suite name="Suite">
-  <test thread-count="5" name="Test">
+<suite name="Suite" parallel="test">
+ <test thread-count="5" name="RegressionGC">
+ <parameter name="grid" value="yes"/>
+ <parameter name="remoteAddr" value="http://localhost:4444" />
+ <prameter name="browserName" value="chrome"/>
     <packages>
       <package name="script"/>
     </packages>
   </test> 
+ <test thread-count="5" name="RegressionFF">
+ <parameter name="grid" value="yes"/>
+ <parameter name="remoteAddr" value="http://localhost:4444" />
+ <prameter name="browserName" value="firefox"/>
+    <packages>
+      <package name="script"/>
+    </packages>
+  </test>
 </suite> 

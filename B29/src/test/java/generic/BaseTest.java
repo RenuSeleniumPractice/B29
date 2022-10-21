@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -23,16 +25,27 @@ public class BaseTest implements IAutomation{
 
 	public WebDriver driver;
 	public WebDriverWait wait;
-	public String remoteAddr="http://localhost:4444";
 	 
+	@Parameters({"grid","remoteAddr","browserName"})
 	@BeforeMethod
-	public void openApp() throws MalformedURLException {
+	public void openApp(@Optional("")String grid,@Optional("") String remoteAddr,@Optional("") String browserName) throws MalformedURLException {
 	
 		String url = getValue("URL");
 		long ito = Long.parseLong(getValue("ITO"));
 		long eto = Long.parseLong(getValue("ETO"));
-		String grid=getValue("GRID");
-		String 	browserName=getValue("BROWSER");
+		
+		if(browserName.equals(""))
+		{
+			grid=getValue("GRID");
+		}
+		if(remoteAddr.equals(""))
+		{
+			remoteAddr= getValue("REMOTE");
+		}
+		if(browserName.equals(""))
+		{
+			browserName = getValue("BROWSER");
+		}
 			
 		if(grid.equalsIgnoreCase("YES"))
 		{
